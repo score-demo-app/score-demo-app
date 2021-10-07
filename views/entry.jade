@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  head
+    meta(charset='UTF-8')
+    title Entry Form
+  body
+    h3 New Mentor Entry Form
+    form(method='POST' action='/post-feedback')
+      label
+        | First Name
+        input(type='text' name='first-name' required='' class='nameEntry')
+      br
+      br
+      label
+        | Last Name
+        input(type='text' name='last-name' required='' class='nameEntry')
+      br
+      br
+      label
+        | Career Summary
+        br
+        textarea(name='career-summary',rows=10,cols=50)
+      br
+      br
+      label
+        | Expertise
+        br
+        textarea(name='expertise',rows=10,cols=50)
+      br
+      br
+      label
+        | Experience
+        br
+        textarea(name='experience',rows=10,cols=50)
+      br
+      br
+      input(type='submit' value='Submit')
+      br
+      br
+    a(href='/') Return to Main Page
