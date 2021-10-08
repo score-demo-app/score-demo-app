@@ -10,6 +10,8 @@ const mentorSchema = new Schema(
     },
     expertise: Array,
     experience: Array,
+    languages: Array,
+    education: String,
     careerSummary: {
       type: String,
       required: false,

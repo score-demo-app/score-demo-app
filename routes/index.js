@@ -37,10 +37,11 @@ router.post("/post-feedback", async (req, res) => {
     .replace(/(\r\n|\r|\n)/gm, "")
     .split(" / ");
   formattedMentor.languages = splitLanguages;
-  let splitEducation = json["education"].split(" / ");
+  let splitEducation = json["education"];
   formattedMentor.education = splitEducation;
   let splitCareerSummary = json["careerSummary"];
   formattedMentor.careerSummary = splitCareerSummary;
+  console.log(formattedMentor);
   await mongoDB.storeNewMentor(formattedMentor);
   await mongoDB.disconnect();
 
