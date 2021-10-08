@@ -9,18 +9,18 @@ block content
     form(method='POST' action='/post-feedback')
       label
         | First Name
-        input(type='text' name='first-name' required='' class='nameEntry')
+        input(type='text' name='firstName' required='' class='nameEntry')
       br
       br
       label
         | Last Name
-        input(type='text' name='last-name' required='' class='nameEntry')
+        input(type='text' name='lastName' required='' class='nameEntry')
       br
       br
       label
         | Career Summary
         br
-        textarea(name='career-summary',rows=10,cols=50)
+        textarea(name='careerSummary',rows=10,cols=50)
       br
       br
       label
@@ -33,6 +33,18 @@ block content
         | Experience
         br
         textarea(name='experience',rows=10,cols=50)
+      br
+      br
+      label 
+        | Languages 
+        br
+        textarea(name='languages', rows=10, cols=50)
+      br
+      br
+      label
+        | Education 
+        br
+        textarea(name='education', rows=10, cols=50)
       br
       br
       input(type='submit' value='Submit')
