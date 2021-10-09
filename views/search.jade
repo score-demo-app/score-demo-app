@@ -5,5 +5,11 @@ block content
         meta(charset='UTF-8')
         title Search
     body
-        h2 
-        
+        h3 Enter a search query below:
+        form(method='POST' action='')
+            label
+                | Search
+                input(type='text' name='search-query' required='' class='nameEntry')
+            br
+            br
+        a(href='/') Return to Main Page
