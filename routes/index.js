@@ -45,7 +45,7 @@ router.post("/post-feedback", async (req, res) => {
   await mongoDB.storeNewMentor(formattedMentor);
   await mongoDB.disconnect();
 
-  res.render("submitPage");
+  res.render("submitPage", { record : formattedMentor});
 });
 
 // module.exports = router;
