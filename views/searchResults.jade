@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    head
+        meta(charset='UTF-8')
+        title Search
+    h2 Here are the records that match your search !
+    each mentor in mentors
+        h3 #{mentor.name}

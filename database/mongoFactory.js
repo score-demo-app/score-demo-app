@@ -22,6 +22,46 @@ class MongoDB {
     this.mongoDB;
     this.Mentor = Mentor;
   }
+  async getLanguagesFromAllDocs() {
+    return await this.Mentor.find({}, { languages: 1, _id: 0 });
+  }
+  async getExperienceFromAllDocs() {
+    return await this.Mentor.find({}, { experience: 1, _id: 0 });
+  }
+  async getExpertiseFromAllDocs() {
+    return await this.Mentor.find({}, { expertise: 1, _id: 0 });
+  }
+
+  async searchExperienceInMentor(query) {
+    let doc = await this.Mentor.find({
+      experience: {
+        $elemMatch: {
+          $eq: query,
+        },
+      },
+    });
+    return doc;
+  }
+  async searchLanguagesInMentor(query) {
+    let doc = await this.Mentor.find({
+      languages: {
+        $elemMatch: {
+          $eq: query,
+        },
+      },
+    });
+    return doc;
+  }
+  async searchExpertiseInMentor(query) {
+    let doc = await this.Mentor.find({
+      expertise: {
+        $elemMatch: {
+          $eq: query,
+        },
+      },
+    });
+    return doc;
+  }
   async storeNewMentor(formattedMentor) {
     try {
       await this.Mentor.create({

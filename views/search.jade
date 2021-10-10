@@ -1,4 +1,24 @@
 extends layout
 
 block content
-    p blah blah blah here be code
+    head
+        meta(charset='UTF-8')
+        title Search
+
+    body
+        h3 Enter a search query below:
+        form(method='POST' action='/fuzzy-search')
+            input(type="radio", name="category_filter", value="language", checked=category=="language")
+            | Language 
+            input(type="radio", name="category_filter", value="experience", checked=category=="experience")
+            | Experience  
+            input(type="radio", name="category_filter", value="expertise", checked=category=="expertise")
+            | Expertise 
+            br
+            br
+            label
+                | Search
+                input(type='text' name='search-query' required='' class='nameEntry')
+            br
+            br
+        a(href='/') Return to Main Page
