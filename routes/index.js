@@ -21,6 +21,9 @@ router.get("/search", function (req, res) {
   res.render("search");
 });
 
+router.post("/fuzzy-search", async (req, res) => {
+  console.log("bababooey boom shakalala");
+});
 router.post("/post-feedback", async (req, res) => {
   let json = req.body;
   let formattedMentor = {};
@@ -45,7 +48,7 @@ router.post("/post-feedback", async (req, res) => {
   await mongoDB.storeNewMentor(formattedMentor);
   await mongoDB.disconnect();
 
-  res.render("submitPage", { record : formattedMentor});
+  res.render("submitPage", { record: formattedMentor });
 });
 
 // module.exports = router;
