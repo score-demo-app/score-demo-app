@@ -4,6 +4,7 @@ block content
     head
         meta(charset='UTF-8')
         title Search
+
     body
         h3 Enter a search query below:
         form(method='POST' action='/fuzzy-search')
@@ -12,4 +13,28 @@ block content
                 input(type='text' name='search-query' required='' class='nameEntry')
             br
             br
+            script
+              |  function myFunction() {
+              |     console.log('here com dat boi')
+              |     document.getElementById("myDropdown").classList.toggle("show");
+              |  }
+              |  window.onclick = function(event) {
+              |     if (!event.target.matches('.dropbtn')) {
+              |     var dropdowns = document.getElementsByClassName("dropdown-content");
+              |     var i;
+              |     for (i = 0; i < dropdowns.length; i++) {
+              |          console.log(dropdowns[i])
+              |         var openDropdown = dropdowns[i];
+              |         if (openDropdown.classList.contains('show')) {
+              |             openDropdown.classList.remove('show');
+              |         }
+              |     }
+              |     }
+              |     }    
+            .dropdown
+                button.dropbtn(onclick='myFunction()') Dropdown
+                #myDropdown.dropdown-content
+                    a(href='#') Link 1
+                    a(href='#') Link 2
+                    a(href='#') Link 3
         a(href='/') Return to Main Page

@@ -22,6 +22,21 @@ class MongoDB {
     this.mongoDB;
     this.Mentor = Mentor;
   }
+  async searchInMentor(query) {
+    let doc = await this.Mentor.find({
+      languages: {
+        $elemMatch: {
+          $text: {
+            $search: query,
+            $language: "English",
+            $caseSensitive: false,
+            $diacriticSensitive: false,
+          },
+        },
+      },
+    });
+    return doc;
+  }
   async storeNewMentor(formattedMentor) {
     try {
       await this.Mentor.create({

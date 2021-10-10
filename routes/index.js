@@ -22,7 +22,17 @@ router.get("/search", function (req, res) {
 });
 
 router.post("/fuzzy-search", async (req, res) => {
-  console.log("bababooey boom shakalala");
+  let json = req.body;
+  let query = json["search-query"]; // Marketing
+  // step 1: load in all of the documents, based on the criteria
+  // ( criterion: { language, expertise, experience})
+  // step 2: fuzzysort.go(query, loaded, { key: criterion})
+  // step 3: return the one with the best result
+  // query : Mrkting => Marketing
+  // query : Busns => Business
+  let listOfMentors = await mongoDB.searchInMentor(query);
+  console.log(listOfMentors);
+  res.render("searchResults", { mentors: listOfMentors });
 });
 router.post("/post-feedback", async (req, res) => {
   let json = req.body;
