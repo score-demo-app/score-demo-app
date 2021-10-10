@@ -70,7 +70,7 @@ h1 img {
 .showcase {
   height: 550px;
   background-color: var(--primary-color);
-  color: #333;
+  color: #fff;
   position: relative;
 }
 
@@ -91,7 +91,7 @@ h1 img {
   font-weight: 300;
   height: 250px;
   background-color: #333;
-  color: #333;
+  color: #fff;
   position: relative;
 }
 
