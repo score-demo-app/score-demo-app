@@ -4,6 +4,22 @@ block content
     head
         meta(charset='UTF-8')
         title Search
-    h2 Here are the records that match your search !
-    each mentor in mentors
-        h3 #{mentor.name}
+    h1(style="color:  #2980b9") Here are the records that match your search !
+    table(class="result-table")
+        tr
+            td(class="nameColumn column-head") Name
+            td(class="careerColumn column-head") Career Summary
+            td(class="experienceColumn column-head") Experience
+            td(class="expertiseColumn column-head") Expertise
+        each mentor in mentors
+            tr 
+                td #{mentor.name}
+                td #{mentor.careerSummary}
+                td #{mentor.experience}
+                td #{mentor.expertise}
+
+    br
+    br
+    a(href='/search' ) Back to Search Page
+    a(href='/' style="padding:15px;") Return to Main Page
+    
