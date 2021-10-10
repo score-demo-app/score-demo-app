@@ -26,11 +26,10 @@ router.post("/fuzzy-search", async (req, res) => {
   let json = req.body;
   let query = json["search-query"]; // Marketing
   let category = json["category_filter"];
-  let allLangs = [];
   let betterQuery = "";
   switch (category) {
     case "language":
-      allLangs = await mongoDB.getLanguagesFromAllDocs();
+      let allLangs = await mongoDB.getLanguagesFromAllDocs();
       try {
         let formattedLangs = [];
         allLangs.forEach((obj) => {
@@ -43,16 +42,63 @@ router.post("/fuzzy-search", async (req, res) => {
         if (results.length > 0) {
           betterQuery = results[0].target;
         }
-        let listOfMentors = await mongoDB.searchInMentor(betterQuery);
-        console.log("the list: " + listOfMentors);
+        let listOfMentors = await mongoDB.searchLanguagesInMentor(betterQuery);
         res.render("searchResults", { mentors: listOfMentors });
       } catch (err) {
-        console.log("babaooey");
+        console.log("error with languages");
       }
       break;
     case "experience":
+      let allExperiences = await mongoDB.getExperienceFromAllDocs();
+      try {
+        let formattedExperiences = [];
+        allExperiences.forEach((obj) => {
+          let internalArray = obj.experience;
+          internalArray.forEach((a) => {
+            formattedExperiences.push(a);
+          });
+        });
+        let results = fuzzysort.go(query, formattedExperiences);
+        console.log(results.length);
+        if (results.length > 0) {
+          betterQuery = results[0].target;
+        }
+        let listOfMentors = await mongoDB.searchExperienceInMentor(betterQuery);
+        res.render("searchResults", { mentors: listOfMentors });
+      } catch (err) {
+        console.log("error with experiences");
+      }
       break;
     case "expertise":
+      let allExpertise = await mongoDB.getExpertiseFromAllDocs();
+      try {
+        let formattedExpertise = [];
+        allExpertise.forEach((obj) => {
+          let internalArray = obj.expertise;
+          internalArray.forEach((a) => {
+            formattedExpertise.push(a);
+          });
+        });
+        let results = fuzzysort.go(query, formattedExpertise);
+        let listOfQueries = new Set();
+        if (results.length > 0) {
+          results.forEach((result) => {
+            listOfQueries.add(result.target);
+          });
+        }
+        let queryArray = Array.from(listOfQueries);
+        console.log(queryArray);
+        let listOfMentors = [];
+        // why this loooping below is so weird!!!!
+        for (let idx in queryArray) {
+          let mentor = await mongoDB.searchExpertiseInMentor(queryArray[idx]);
+          listOfMentors.push(mentor);
+        }
+        console.log(listOfMentors[0]);
+        res.render("searchResults", { mentors: listOfMentors[0] });
+      } catch (err) {
+        console.log(err);
+      }
       break;
   }
 });
