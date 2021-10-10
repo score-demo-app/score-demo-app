@@ -22,16 +22,15 @@ class MongoDB {
     this.mongoDB;
     this.Mentor = Mentor;
   }
+  async getLanguagesFromAllDocs() {
+    return await this.Mentor.find({}, { languages: 1, _id: 0 });
+  }
+
   async searchInMentor(query) {
     let doc = await this.Mentor.find({
       languages: {
         $elemMatch: {
-          $text: {
-            $search: query,
-            $language: "English",
-            $caseSensitive: false,
-            $diacriticSensitive: false,
-          },
+          $eq: query,
         },
       },
     });

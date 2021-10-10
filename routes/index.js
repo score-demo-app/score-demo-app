@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 const router = express.Router();
 // var mongoDB = require("../database/mongoFactory.js");
 import mongoDB from "../database/mongoFactory.js";
+import fuzzysort from "fuzzysort";
 
 /* GET home page. */
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -24,15 +25,36 @@ router.get("/search", function (req, res) {
 router.post("/fuzzy-search", async (req, res) => {
   let json = req.body;
   let query = json["search-query"]; // Marketing
-  // step 1: load in all of the documents, based on the criteria
-  // ( criterion: { language, expertise, experience})
-  // step 2: fuzzysort.go(query, loaded, { key: criterion})
-  // step 3: return the one with the best result
-  // query : Mrkting => Marketing
-  // query : Busns => Business
-  let listOfMentors = await mongoDB.searchInMentor(query);
-  console.log(listOfMentors);
-  res.render("searchResults", { mentors: listOfMentors });
+  let category = json["category_filter"];
+  let allLangs = [];
+  let betterQuery = "";
+  switch (category) {
+    case "language":
+      allLangs = await mongoDB.getLanguagesFromAllDocs();
+      try {
+        let formattedLangs = [];
+        allLangs.forEach((obj) => {
+          let internalArray = obj.languages;
+          internalArray.forEach((a) => {
+            formattedLangs.push(a);
+          });
+        });
+        let results = fuzzysort.go(query, formattedLangs);
+        if (results.length > 0) {
+          betterQuery = results[0].target;
+        }
+        let listOfMentors = await mongoDB.searchInMentor(betterQuery);
+        console.log("the list: " + listOfMentors);
+        res.render("searchResults", { mentors: listOfMentors });
+      } catch (err) {
+        console.log("babaooey");
+      }
+      break;
+    case "experience":
+      break;
+    case "expertise":
+      break;
+  }
 });
 router.post("/post-feedback", async (req, res) => {
   let json = req.body;
