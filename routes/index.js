@@ -87,15 +87,27 @@ router.post("/fuzzy-search", async (req, res) => {
           });
         }
         let queryArray = Array.from(listOfQueries);
-        console.log(queryArray);
         let listOfMentors = [];
-        // why this loooping below is so weird!!!!
+
         for (let idx in queryArray) {
           let mentor = await mongoDB.searchExpertiseInMentor(queryArray[idx]);
           listOfMentors.push(mentor);
         }
-        console.log(listOfMentors[0]);
-        res.render("searchResults", { mentors: listOfMentors[0] });
+        let mentorSet = new Set();
+        let mentorMap = new Map();
+        for (let i = 0; i < listOfMentors.length; i++) {
+          for (let j = 0; j < listOfMentors[i].length; j++) {
+            mentorSet.add(listOfMentors[i][j].name);
+            mentorMap.set(listOfMentors[i][j].name, listOfMentors[i][j]);
+          }
+        }
+        let actualList = [];
+        let mentorNames = Array.from(mentorSet);
+        mentorNames.forEach((name) => {
+          actualList.push(mentorMap.get(name));
+        });
+
+        res.render("searchResults", { mentors: actualList });
       } catch (err) {
         console.log(err);
       }
