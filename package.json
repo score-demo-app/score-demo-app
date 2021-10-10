@@ -13,7 +13,7 @@
     "express": "~4.16.1",
     "fuzzysort": "^1.1.4",
     "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
+    "jade": "^1.11.0",
     "mongoose": "^6.0.9",
     "morgan": "~1.9.1"
   }

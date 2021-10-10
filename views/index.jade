@@ -1,10 +1,24 @@
 extends layout
 
 block content
-  h1 Welcome to team Full Stack's App demo
-  p
-    a(href='/search')
-        |Search local mentors
-  p
-    a(href='/entry')
-        |New mentor entry form
+  .navbar
+    .container.flex
+      h1.logo
+        img(src="https://scorenh.org/rw_common/images/score-web-logo.png")
+      nav
+        ul
+          li
+            a(href='/')
+              |Home
+          li
+            a(href='/search')
+              |Search Mentors
+          li
+            a(href='/entry')
+              |Enter New Mentor
+  
+  section.showcase
+    .container.grid 
+      .showcase-text 
+        h1 Welcome
+        p To Team Full Stack's Demo App
