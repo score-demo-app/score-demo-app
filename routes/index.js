@@ -59,12 +59,32 @@ router.post("/fuzzy-search", async (req, res) => {
           });
         });
         let results = fuzzysort.go(query, formattedExperiences);
-        console.log(results.length);
+        let listOfQueries = new Set();
         if (results.length > 0) {
-          betterQuery = results[0].target;
+          results.forEach((result) => {
+            listOfQueries.add(result.target);
+          });
         }
-        let listOfMentors = await mongoDB.searchExperienceInMentor(betterQuery);
-        res.render("searchResults", { mentors: listOfMentors });
+        let queryArray = Array.from(listOfQueries);
+        let listOfMentors = [];
+        for (let idx in queryArray) {
+          let mentor = await mongoDB.searchExperienceInMentor(queryArray[idx]);
+          listOfMentors.push(mentor);
+        }
+        let mentorSet = new Set();
+        let mentorMap = new Map();
+        for (let i = 0; i < listOfMentors.length; i++) {
+          for (let j = 0; j < listOfMentors[i].length; j++) {
+            mentorSet.add(listOfMentors[i][j].name);
+            mentorMap.set(listOfMentors[i][j].name, listOfMentors[i][j]);
+          }
+        }
+        let actualList = [];
+        let mentorNames = Array.from(mentorSet);
+        mentorNames.forEach((name) => {
+          actualList.push(mentorMap.get(name));
+        });
+        res.render("searchResults", { mentors: actualList });
       } catch (err) {
         console.log("error with experiences");
       }
