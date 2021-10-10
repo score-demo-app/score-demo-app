@@ -73,7 +73,7 @@ img {
 }
 
 .showcase {
-  height: 400px;
+  height: 550px;
   background-color: var(--primary-color);
   color: #fff;
   position: relative;
@@ -85,6 +85,28 @@ img {
 
 .showcase p {
   margin: 20px 0;
+}
+
+.showcase .grid {
+  grid-template-columns: 55% 45%;
+  gap: 30px:
+}
+
+.contact {
+  font-weight: 300;
+  height: 250px;
+  background-color: #333;
+  color: #fff;
+  position: relative;
+}
+
+.contact p {
+  margin: 20px 0;
+}
+
+.contact .grid {
+  grid-template-columns: 55% 45%;
+  gap: 30px:
 }
 
 .container {
@@ -101,6 +123,14 @@ img {
   height: 100%;
 }
 
+/* For showcase items */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
 .nameEntry {
   margin-left: 15px;
