@@ -8,3 +8,7 @@ block content
     p Expertise : #{record.expertise}
     p Languages : #{record.languages}
     p Education : #{record.education}
+    br
+    br
+    form(method='POST' action="/enter-another")
+        input(type='submit' value='Enter another mentor' class='entryButton')
