@@ -16,9 +16,21 @@ block content
             tr 
                 td #{mentor.name}
                 td #{mentor.careerSummary}
-                td #{mentor.experience}
-                td #{mentor.expertise}
-                td #{mentor.languages}
+                td 
+                    each e, index in mentor.experience
+                        span #{mentor.experience[index]} 
+                        br 
+                        br
+                td 
+                    each e, index in mentor.expertise 
+                        span #{mentor.expertise[index]}
+                        br
+                        br
+                td 
+                    each e, index in mentor.languages
+                        span #{mentor.languages[index]}
+                        br
+                        br
 
     br
     br
