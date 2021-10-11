@@ -19,7 +19,7 @@ router.get("/entry", function (req, res) {
   res.render("entry");
 });
 router.get("/search", function (req, res) {
-  res.render("search");
+  res.render("search", { message: "Press 'Enter' to continue" });
 });
 
 router.post("/fuzzy-search", async (req, res) => {
@@ -131,6 +131,10 @@ router.post("/fuzzy-search", async (req, res) => {
       } catch (err) {
         console.log(err);
       }
+      break;
+    default:
+      let message = "Please click a radio button to continue";
+      res.render("search", { message: message });
       break;
   }
 });
