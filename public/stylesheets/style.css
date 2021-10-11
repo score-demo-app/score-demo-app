@@ -167,3 +167,26 @@ table, th, td, tr {
 .experienceColumn {
   width: 25%;
 } 
+
+.column-head {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+table, th, td, tr {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.nameColumn {
+  width: 10%;
+}
+.careerColumn {
+  width: 40%;
+}
+.expertiseColumn {
+  width: 25%;
+}
+.experienceColumn {
+  width: 25%;
+}
