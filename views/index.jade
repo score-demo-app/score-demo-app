@@ -1,10 +1,28 @@
 extends layout
 
-block content
-  h1 Welcome to team Full Stack's App demo
-  p
-    a(href='/search')
-        |Search local mentors
-  p
-    a(href='/entry')
-        |New mentor entry form
+block content  
+  section.showcase
+    .container.grid 
+      .showcase-text 
+        h1 Welcome
+        p To Team Full Stack's Demo App
+      .showcase-image
+        img(src="https://s3.amazonaws.com/mentoring.redesign/home-page-volunteer3.jpg")
+  section.contact 
+    .container.grid
+      .contact-box1
+        h3
+        |CONTACT US 
+        br
+        |SCORE Association
+        p
+        |1165 Herndon Parkway
+        br
+        |Suite 100
+        br
+        |Herndon, VA 20170
+      .contact-box2
+        p
+        |PHONE: (800) 643 0245
+        br
+        |TECHNICAL SUPPORT: help@score.org
