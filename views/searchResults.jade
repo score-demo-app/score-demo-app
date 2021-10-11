@@ -11,12 +11,14 @@ block content
             td(class="careerColumn column-head") Career Summary
             td(class="experienceColumn column-head") Experience
             td(class="expertiseColumn column-head") Expertise
+            td(class="languagesColumn column-head") Languages
         each mentor in mentors
             tr 
                 td #{mentor.name}
                 td #{mentor.careerSummary}
                 td #{mentor.experience}
                 td #{mentor.expertise}
+                td #{mentor.languages}
 
     br
     br
