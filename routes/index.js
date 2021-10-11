@@ -15,6 +15,10 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
+router.post("/enter-another", async (req, res) => {
+  res.render("entry");
+});
+
 router.get("/entry", function (req, res) {
   res.render("entry");
 });
