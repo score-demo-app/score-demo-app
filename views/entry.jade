@@ -5,7 +5,7 @@ block content
     meta(charset='UTF-8')
     title Entry Form
   body
-    div(class="content-container")
+    div(class="container")
       h3 New Mentor Entry Form
       form(method='POST' action='/post-feedback')
         label
@@ -21,31 +21,31 @@ block content
         label
           | Career Summary
           br
-          textarea(name='careerSummary',rows=10,cols=50)
+          textarea(name='careerSummary',rows=6,cols=50)
         br
         br
         label
           | Expertise
           br
-          textarea(name='expertise',rows=10,cols=50)
+          textarea(name='expertise',rows=5,cols=50)
         br
         br
         label
           | Experience
           br
-          textarea(name='experience',rows=10,cols=50)
+          textarea(name='experience',rows=5,cols=50)
         br
         br
         label 
           | Languages 
           br
-          textarea(name='languages', rows=10, cols=50)
+          textarea(name='languages', rows=2, cols=50)
         br
         br
         label
           | Education 
           br
-          textarea(name='education', rows=10, cols=50)
+          textarea(name='education', rows=2, cols=50)
         br
         br
         input(type='submit' value='Submit')
