@@ -190,3 +190,8 @@ table, th, td, tr {
 .experienceColumn {
   width: 25%;
 }
+
+
+.search-radio {
+  margin: 10px;
+}
