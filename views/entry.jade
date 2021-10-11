@@ -5,46 +5,47 @@ block content
     meta(charset='UTF-8')
     title Entry Form
   body
-    h3 New Mentor Entry Form
-    form(method='POST' action='/post-feedback')
-      label
-        | First Name
-        input(type='text' name='firstName' required='' class='nameEntry')
-      br
-      br
-      label
-        | Last Name
-        input(type='text' name='lastName' required='' class='nameEntry')
-      br
-      br
-      label
-        | Career Summary
+    div(class="content-container")
+      h3 New Mentor Entry Form
+      form(method='POST' action='/post-feedback')
+        label
+          | First Name
+          input(type='text' name='firstName' required='' class='nameEntry')
         br
-        textarea(name='careerSummary',rows=10,cols=50)
-      br
-      br
-      label
-        | Expertise
         br
-        textarea(name='expertise',rows=10,cols=50)
-      br
-      br
-      label
-        | Experience
+        label
+          | Last Name
+          input(type='text' name='lastName' required='' class='nameEntry')
         br
-        textarea(name='experience',rows=10,cols=50)
-      br
-      br
-      label 
-        | Languages 
         br
-        textarea(name='languages', rows=10, cols=50)
-      br
-      br
-      label
-        | Education 
+        label
+          | Career Summary
+          br
+          textarea(name='careerSummary',rows=10,cols=50)
         br
-        textarea(name='education', rows=10, cols=50)
-      br
-      br
-      input(type='submit' value='Submit')
+        br
+        label
+          | Expertise
+          br
+          textarea(name='expertise',rows=10,cols=50)
+        br
+        br
+        label
+          | Experience
+          br
+          textarea(name='experience',rows=10,cols=50)
+        br
+        br
+        label 
+          | Languages 
+          br
+          textarea(name='languages', rows=10, cols=50)
+        br
+        br
+        label
+          | Education 
+          br
+          textarea(name='education', rows=10, cols=50)
+        br
+        br
+        input(type='submit' value='Submit')
