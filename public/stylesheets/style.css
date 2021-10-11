@@ -84,7 +84,11 @@ h1 img {
 
 .showcase .grid {
   grid-template-columns: 55% 45%;
-  gap: 30px:
+  gap: 30px;
+}
+
+.showcase-image img {
+  width: 100%;
 }
 
 .contact {
@@ -101,7 +105,7 @@ h1 img {
 
 .contact .grid {
   grid-template-columns: 55% 45%;
-  gap: 30px:
+  gap: 30px;
 }
 
 .container {
@@ -115,12 +119,16 @@ h1 img {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;inpu
+  height: 100%;
 }
 
 /* For showcase items */
 .showcase .grid {
-
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .contact .grid {
