@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    head
+        meta(charset='UTF-8')
+        title Delete Mentor 
+    body
+        div(class="container")
+            h3 Enter who you'd like to delete 
+            br
+            form(method='POST' action='/delete-mentor')
+                label
+                    | First name 
+                    input(type='text' name='first-name' required='' class='nameEntry')
+                    br
+                    | Last name
+                    input(type='text' name='last-name'  required='' class='nameEntry')
+                br
+                br
+                input(type='submit' value='Delete' class='deleteButton')

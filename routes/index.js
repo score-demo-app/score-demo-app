@@ -25,6 +25,18 @@ router.get("/entry", function (req, res) {
 router.get("/search", function (req, res) {
   res.render("search", { message: "Press 'Enter' to continue" });
 });
+router.get("/delete", function (req, res) {
+  res.render("delete");
+});
+router.post("/delete-mentor", async (req, res) => {
+  let json = req.body;
+  let firstName = json["first-name"];
+  let lastName = json["last-name"];
+  let name = lastName + ", " + firstName;
+  await mongoDB.deleteMentor(name);
+
+  res.render("deleteResult");
+});
 
 router.post("/fuzzy-search", async (req, res) => {
   let json = req.body;
