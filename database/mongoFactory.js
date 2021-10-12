@@ -77,6 +77,15 @@ class MongoDB {
       console.log(err);
     }
   }
+  async deleteMentor(name) {
+    try {
+      await this.Mentor.deleteOne({
+        name: { $eq: name },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
   async disconnect() {
     await mongoose.disconnect();
   }
